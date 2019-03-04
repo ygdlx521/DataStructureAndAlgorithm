@@ -1,5 +1,6 @@
 package online.daliang.binarytree
 
+import scala.collection.immutable.Stream.Empty
 import scala.collection.mutable
 
 /**
@@ -73,5 +74,45 @@ class BinaryTree {
       Math.max(getDepth(head.left),getDepth(head.right)) + 1
     }
   }
+
+  def getTotalNum(head:Node):Int = {
+    if(head == null){
+      0
+    } else {
+      getTotalNum(head.left) + getTotalNum(head.right) + 1
+    }
+  }
+
+  def leftViewPrint(head:Node)={
+    if(head == null) {
+      println("Empty Tree!")
+    } else {
+      val queue = new mutable.Queue[Node]()
+      queue.enqueue(head)
+      var count = 0
+      var cur_level_cnt = 1
+      var next_level_cnt = 0
+      while(queue.nonEmpty){
+        val out = queue.dequeue()
+        if(count == 0)
+          print(out.value)
+        count += 1
+        if(out.left != null) {
+          queue.enqueue(out.left)
+          next_level_cnt += 1
+        }
+        if(out.right != null) {
+          queue.enqueue(out.right)
+          next_level_cnt += 1
+        }
+        if(count == cur_level_cnt){
+          cur_level_cnt = next_level_cnt
+          count = 0
+          next_level_cnt = 0
+        }
+      }
+    }
+  }
+
 
 }
