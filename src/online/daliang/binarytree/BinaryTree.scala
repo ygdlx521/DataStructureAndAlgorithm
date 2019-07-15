@@ -83,7 +83,7 @@ class BinaryTree {
     }
   }
 
-  def leftViewPrint(head:Node)={
+  def leftViewPrint(head:Node): Unit ={
     if(head == null) {
       println("Empty Tree!")
     } else {
@@ -113,6 +113,7 @@ class BinaryTree {
       }
     }
   }
+
 
 
 }
