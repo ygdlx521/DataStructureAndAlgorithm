@@ -1,5 +1,8 @@
 package online.daliang.binarytree
 
+import java.util
+
+import scala.collection.JavaConverters._
 import scala.collection.immutable.Stream.Empty
 import scala.collection.mutable
 
@@ -9,6 +12,7 @@ import scala.collection.mutable
 class BinaryTree {
 
   var root:Node = _
+  var array = mutable.ArrayBuilder[Int]()
 
   def createFromArray(array:Array[Int], index:Int): Node = {
     var temp:Node = null
@@ -46,6 +50,14 @@ class BinaryTree {
       posOrderPrint(head.left)
       posOrderPrint(head.right)
       print(s"${head.value}")
+    }
+  }
+
+  def posOrderTraversal(head:Node):Unit = {
+    if(head != null){
+      posOrderPrint(head.left)
+      posOrderPrint(head.right)
+      this.array
     }
   }
 
